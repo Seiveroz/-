@@ -1,0 +1,53 @@
+# این همان فایل «اکشن» انتشار خودکار بازی در GitHub Pages است.
+# ⚠️ ربات Arena اجازه‌ی push کردن فایل workflow را ندارد، پس فقط یک بار این کار را خودتان انجام دهید:
+#
+#   1) این فایل را به مسیر زیر منتقل/کپی کنید (نام فایل دلخواه، مثلاً deploy-pages.yml):
+#        .github/workflows/deploy-pages.yml
+#   2) یک commit و push بزنید.
+#   3) تمام! اکشن خودش GitHub Pages را فعال می‌کند و پوشه‌ی game/ را در
+#      https://seiveroz.github.io/-/ منتشر می‌کند. (از دفعه‌ی بعد هر push خودکار منتشر می‌شود)
+#
+# راه دوم (بدون اکشن): در GitHub → Settings → Pages ← Branch را
+#   «arena/01a01c53-repo» و Folder را «/ (root)» بگذارید و Save بزنید.
+
+name: 🌐 Deploy game to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - arena/01a01c53-repo
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: ⬇️ Checkout
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Setup Pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: 📦 Upload game artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: game
+
+      - name: 🚀 Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

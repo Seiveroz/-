@@ -6,6 +6,9 @@
 
 ▶️ **[https://seiveroz.github.io/-/](https://seiveroz.github.io/-/)** — بدون نصب، مستقیم در مرورگر (اندروید، iOS، دسکتاپ)
 
+> **فعال‌سازی (فقط یک بار):** در GitHub → **Settings → Pages** شاخه را `arena/01a01c53-repo` (یا پس از merge، `main`) و پوشه را `/ (root)` انتخاب کنید و Save بزنید.
+> یا فایل آماده‌ی `tools/deploy-pages.workflow.yml` را به `.github/workflows/deploy-pages.yml` منتقل و push کنید تا همه‌چیز خودکار شود.
+
 ## 🎮 داستان بازی
 
 شما پادشاه یک حکومت باستانی هستید. هدف شما فتح **هر ۶ سرزمین مادر جهان** و تبدیل شدن به تنها **«فاتح جهان»** است:
