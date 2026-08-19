@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جنگ سلسله — بازی استراتژی فتح جهان</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="stars"></div>
+
+  <!-- ============ منوی اصلی ============ -->
+  <div id="screen-menu" class="screen active">
+    <div class="logo-crown">👑</div>
+    <div style="text-align:center">
+      <div class="game-title">جنگ سلسله</div>
+      <div class="game-sub">استراتژی فتح جهان در دوران باستان</div>
+    </div>
+    <div class="menu-buttons">
+      <button class="btn gold" id="btn-new" data-action="menu-new">⚔️ شروع فصل جدید</button>
+      <button class="btn" id="btn-continue" data-action="menu-continue" style="display:none">▶️ ادامه بازی</button>
+      <button class="btn ghost" id="btn-help-menu" data-action="menu-help">📖 راهنمای بازی</button>
+    </div>
+    <div style="color:var(--muted);font-size:12.5px;margin-top:10px">۶ تمدن • ۸۰+ شخصیت • ۶ سرزمین مادر • فقط یک امپراتور</div>
+  </div>
+
+  <!-- ============ انتخاب شخصیت ============ -->
+  <div id="screen-setup" class="screen">
+    <div class="setup-head">
+      <h2>👑 انتخاب شخصیت و حکومت</h2>
+      <p>ابتدا تمدن، سپس شخصیت تاریخی و در پایان حکومت خود را برگزینید.</p>
+    </div>
+    <div class="civ-grid" id="civ-grid"></div>
+    <div id="char-section" style="display:none;width:100%">
+      <div class="section-title">🎭 انتخاب شخصیت</div>
+      <div class="pick-grid" id="char-grid"></div>
+    </div>
+    <div id="kingdom-section" style="display:none;width:100%">
+      <div class="section-title">🏰 انتخاب حکومت <span style="color:var(--muted);font-weight:400;font-size:13px">(هزینه: ۱۰۰٬۰۰۰ سکه)</span></div>
+      <div class="pick-grid" id="kingdom-grid"></div>
+    </div>
+    <div class="setup-actions">
+      <button class="btn ghost" id="btn-back-menu" data-action="setup-back">↩ بازگشت</button>
+      <button class="btn gold" id="btn-start" data-action="setup-start" disabled>👑 آغاز سلطنت</button>
+    </div>
+  </div>
+
+  <!-- ============ صفحه بازی ============ -->
+  <div id="screen-game" class="screen">
+    <div class="topbar">
+      <div class="identity">
+        <div class="avatar" id="t-avatar">👑</div>
+        <div class="who">
+          <b id="t-name">—</b>
+          <span id="t-kingdom">—</span>
+        </div>
+      </div>
+      <div class="stat"><span class="lbl">طلا</span><span class="val gold" id="t-gold">۰</span></div>
+      <div class="stat"><span class="lbl">درآمد روزانه</span><span class="val" id="t-income">۰</span></div>
+      <div class="stat"><span class="lbl">رضایت مردم</span><span class="val" id="t-satisfaction">—</span></div>
+      <div class="stat"><span class="lbl">ارتش</span><span class="val" id="t-army">۰</span></div>
+      <div class="stat"><span class="lbl">قدرت نظامی</span><span class="val" id="t-power">۰</span></div>
+      <div class="spacer"></div>
+      <div class="day-pill"><b id="t-day">روز ۱</b><span id="t-season">فصل ۱</span></div>
+      <button class="btn ghost sm" id="btn-music" data-action="toggle-music" title="موسیقی">🎵</button>
+      <button class="btn gold sm" id="btn-end-day" data-action="end-day">🌙 پایان روز</button>
+    </div>
+    <div class="tabs" id="tabs">
+      <div class="tab active" data-tab="map">🗺️ نقشه جهان</div>
+      <div class="tab" data-tab="kingdom">🏛️ حکومت من</div>
+      <div class="tab" data-tab="army">⚔️ ارتش</div>
+      <div class="tab" data-tab="heroes">🦸 قهرمانان</div>
+      <div class="tab" data-tab="news">📰 اخبار جهان</div>
+      <div class="tab" data-tab="help">📖 راهنما</div>
+    </div>
+    <div class="main" id="tab-content"></div>
+  </div>
+
+  <!-- مودال‌ها و توست -->
+  <div class="modal-backdrop" id="modal-backdrop"></div>
+  <div id="toasts"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/events.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/map.js"></script>
+  <script src="js/music.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
