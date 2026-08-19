@@ -1,0 +1,11 @@
+node_modules/
+desktop/game/
+desktop/node_modules/
+desktop/icon.png
+desktop/package-lock.json
+tools/embedded.c
+tools/app.res
+tools/app.ico
+*.pdb
+*.log
+.DS_Store

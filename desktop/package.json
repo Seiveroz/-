@@ -1,0 +1,48 @@
+{
+  "name": "jang-selseleh",
+  "productName": "جنگ سلسله",
+  "version": "1.0.0",
+  "description": "جنگ سلسله — بازی استراتژی فتح جهان در دوران باستان",
+  "main": "main.js",
+  "author": "Jang Selseleh",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "prepare-game": "node copy-game.js",
+    "dist:win": "node copy-game.js && electron-builder --win --x64"
+  },
+  "devDependencies": {
+    "electron": "31.7.7",
+    "electron-builder": "24.13.3"
+  },
+  "build": {
+    "appId": "com.jangselseleh.game",
+    "productName": "جنگ سلسله",
+    "asar": true,
+    "directories": {
+      "output": "../build"
+    },
+    "files": [
+      "main.js",
+      "icon.ico",
+      "game/**/*"
+    ],
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ],
+      "icon": "icon.ico",
+      "artifactName": "Jang-Selseleh-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "جنگ سلسله",
+      "artifactName": "Jang-Selseleh-Setup-${version}.${ext}",
+      "uninstallDisplayName": "جنگ سلسله"
+    }
+  }
+}
